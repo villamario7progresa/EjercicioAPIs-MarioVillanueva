@@ -1,1 +1,40 @@
-<p>list-page works!</p>
+@if (loaded) {
+  <div class="row my-5">
+    <div class="col-12 d-flex justify-content-center">
+      <ngb-pagination
+                      [collectionSize]="apiData.totalCount"
+                      [pageSize]="20"
+                      [(page)]="currentPage"
+                      (pageChange)="pageChanged($event)"
+                      [rotate]="true"
+                      [maxSize]="3"
+                      [ellipses]="true"></ngb-pagination>
+    </div>
+
+    @for ( card of cardList(); track card.id) {
+      <div class="col-md-3 my-2">
+        <div class="flip-card">
+
+          <div class="flip-card-inner">
+
+            <div class="flip-card-front">
+              <img [src]="cardBackUrl" alt="Reverso Pokémon TCG" class="card-img">
+            </div>
+
+            <div class="flip-card-back">
+              <img [src]="card.images.large" [alt]="card.name" class="card-img">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+} @else {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+}
