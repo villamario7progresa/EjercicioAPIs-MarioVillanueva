@@ -1,0 +1,31 @@
+@if (loaded) {
+  <div class="row my-5">
+    <div class="col-12 d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [pageSize]="20"
+        [(page)]="currentPage"
+        (pageChange)="pageChanged($event)"
+        [rotate]="true"
+        [maxSize]="3"
+        [ellipses]="true"></ngb-pagination>
+    </div>
+
+    @for ( monster of monsterList(); track monster.id) {
+      <div class="card" style="width: 18rem;">
+        <img [src]="monster.assets.image" class="card-img-top" [alt]="monster.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ monster.name }}</h5>
+          <p class="card-text">{{monster.type}}</p>
+        </div>
+      </div>
+    }
+
+  </div>
+} @else {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+}
