@@ -2,11 +2,13 @@ import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {DataService} from '../../../services/data-service';
 import {ApiPokemonResponse, InfoPKM} from '../../../common/interfaces';
 import {NgbPagination} from '@ng-bootstrap/ng-bootstrap';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-list-page',
   imports: [
-    NgbPagination
+    NgbPagination,
+    RouterLink
   ],
   templateUrl: './list-page.html',
   styleUrl: './list-page.css',

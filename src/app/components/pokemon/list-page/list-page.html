@@ -15,7 +15,7 @@
       <div class="col-md-3 my-2">
         <div class="flip-card">
 
-          <div class="flip-card-inner">
+          <div class="flip-card-inner" [routerLink]="'/cards/detail/'+card.id" ]>
 
             <div class="flip-card-front">
               <img [src]="cardBackUrl" alt="Reverso Pokémon TCG" class="card-img">

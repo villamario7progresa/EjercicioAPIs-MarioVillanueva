@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ApiPokemonResponse, InfoPKM} from '../common/interfaces';
+import {ApiMonsterResponse, ApiPokemonResponse, InfoMonster, InfoPKM} from '../common/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -24,4 +24,35 @@ export class DataService {
     )
   }
 
+
+  private readonly urlBaseMonster = 'https://mhw-db.com/weapons';
+
+  private readonly pageSize = 20;
+
+  getDataMonster(page: number): Observable<InfoMonster[]> {
+
+
+    const minId = (page - 1) * this.pageSize + 1;
+
+    const maxId = page * this.pageSize;
+
+    const query = `{"id":{"$gte":${minId},"$lte":${maxId}}}`;
+
+    const finalUrl = `${this.urlBaseMonster}?q=${query}`;
+
+    return this.httpClient.get<InfoMonster[]>(finalUrl);
+  }
+
+  getOneMonster(id: number): Observable<InfoMonster> {
+    return this.httpClient.get<InfoMonster>(
+      `${this.urlBaseMonster}/${id}`
+    );
+  }
 }
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+@if (card) {
+  <div class="row my-5 rounded-2 shadow">
+    <div class="col-md-4">
+      <img [src]="card.images.large" [alt]="card.name" class="img-fluid">
+    </div>
+    <div class="col-md-4">
+      <h2 class="text-primary">{{card.name}}</h2>
+      <h3>Data</h3>
+      <h4><strong>Rareza: </strong>{{card.rarity}}</h4>
+      <h4><strong>HP: </strong>{{card.hp}}</h4>
+      <h4><strong>descripcion: </strong>{{card.flavorText}}</h4>
+
+      <div class="col-md-4">
+        <h3>Abilidades</h3>
+        <ul class="overflow-scroll">
+          @for (abilities of card.abilities; track $index){
+            <li class="text-primary small">{{abilities}}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Ataques</h3>
+        <ul class="overflow-scroll">
+          @for (attack of card.attacks; track $index){
+            <li class="text-primary small">{{attack}}</li>
+          }
+        </ul>
+      </div>
+
+    </div>
+  </div>
+} @else {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+}
