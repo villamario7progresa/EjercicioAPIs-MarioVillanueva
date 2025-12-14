@@ -3,11 +3,15 @@ import {DataService} from '../../../services/data-service';
 import { InfoMonster} from '../../../common/interfaces';
 import {NgbPagination} from '@ng-bootstrap/ng-bootstrap';
 import {RouterLink} from '@angular/router';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-list-page-mosnter',
+  standalone: true,
   imports: [
+    CommonModule,
     NgbPagination,
+    RouterLink
   ],
   templateUrl: './list-page-mosnter.html',
   styleUrl: './list-page-mosnter.css',
