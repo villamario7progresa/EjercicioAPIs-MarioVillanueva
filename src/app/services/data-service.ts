@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ApiMonsterResponse, ApiPokemonResponse, InfoMonster, InfoPKM} from '../common/interfaces';
 
@@ -25,27 +25,23 @@ export class DataService {
   }
 
 
-  private readonly urlBaseMonster = 'https://mhw-db.com/weapons';
+  private readonly urlBaseMonster = 'https://mhw-db.com/weapons/';
 
   private readonly pageSize = 20;
 
-  getDataMonster(page: number): Observable<InfoMonster[]> {
 
+  getDataMonster(page: number) {
+    const min = (page - 1) * 20 + 1;
+    const max = page * 20;
 
-    const minId = (page - 1) * this.pageSize + 1;
-
-    const maxId = page * this.pageSize;
-
-    const query = `{"id":{"$gte":${minId},"$lte":${maxId}}}`;
-
-    const finalUrl = `${this.urlBaseMonster}?q=${query}`;
-
-    return this.httpClient.get<InfoMonster[]>(finalUrl);
+    const query = `{"id":{"$gte":${min},"$lte":${max}}}`;
+    const url = 'https://mhw-db.com/weapons?q=' + query;
+    return this.httpClient.get<InfoMonster[]>(url);
   }
 
   getOneMonster(id: number): Observable<InfoMonster> {
     return this.httpClient.get<InfoMonster>(
-      `${this.urlBaseMonster}/${id}`
+      this.urlBaseMonster + id
     );
   }
 }

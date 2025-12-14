@@ -1,0 +1,11 @@
+.card:hover {
+  cursor: pointer;
+  border-color: darkblue;
+  box-shadow: 2px 2px 4px darkblue;
+  transform: scale(1.02);
+  transition: 0.3s;
+}
+
+.card {
+  transition: 0.3s;
+}

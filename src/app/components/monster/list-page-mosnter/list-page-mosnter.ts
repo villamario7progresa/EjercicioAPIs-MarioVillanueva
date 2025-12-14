@@ -9,9 +9,9 @@ import {CommonModule} from '@angular/common';
   selector: 'app-list-page-mosnter',
   standalone: true,
   imports: [
-    CommonModule,
     NgbPagination,
-    RouterLink
+    CommonModule,
+    RouterLink,
   ],
   templateUrl: './list-page-mosnter.html',
   styleUrl: './list-page-mosnter.css',
