@@ -33,7 +33,7 @@ export class DataService {
   getDataMonster(page: number) {
     const min = (page - 1) * 20 + 1;
     const max = page * 20;
-
+    console.log(page,min,max);
     const query = `{"id":{"$gte":${min},"$lte":${max}}}`;
     const url = 'https://mhw-db.com/weapons?q=' + query;
     return this.httpClient.get<InfoMonster[]>(url);

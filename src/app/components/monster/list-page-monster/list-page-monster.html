@@ -14,7 +14,11 @@
     @for ( monster of monsterList(); track monster.id) {
       <div class="col-md-3 my-2 ">
       <div class="card card bg-dark text-light" [routerLink]="'/monster/detail/'+monster.id" style="width: 18rem; ">
-        <img [src]="monster.assets.image" class="card-img-top" [alt]="monster.name">
+        @if (monster.assets != null) {
+          <img [src]="monster.assets.image" class="card-img-top" [alt]="monster.name">
+        } @else {
+        <img src="/favicon.ico" class="card-img-top" [alt]="monster.name">
+        }
         <div class="card-body">
           <h5 class="card-title">{{ monster.name }}</h5>
           <p class="card-text">{{monster.type}}</p>

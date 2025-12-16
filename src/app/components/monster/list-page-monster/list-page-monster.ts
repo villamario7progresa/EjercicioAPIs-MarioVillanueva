@@ -1,4 +1,4 @@
-import {Component, inject, signal, WritableSignal} from '@angular/core';
+import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {DataService} from '../../../services/data-service';
 import { InfoMonster} from '../../../common/interfaces';
 import {NgbPagination} from '@ng-bootstrap/ng-bootstrap';
@@ -6,17 +6,17 @@ import {RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 
 @Component({
-  selector: 'app-list-page-mosnter',
+  selector: 'app-list-page-monster',
   standalone: true,
   imports: [
     NgbPagination,
     CommonModule,
     RouterLink,
   ],
-  templateUrl: './list-page-mosnter.html',
-  styleUrl: './list-page-mosnter.css',
+  templateUrl: './list-page-monster.html',
+  styleUrl: './list-page-monster.css',
 })
-export class ListPageMosnter {
+export class ListPageMonster implements OnInit{
   private readonly dataService: DataService = inject(DataService);
 
   monsterList: WritableSignal<InfoMonster[]>=signal<InfoMonster[]>([]);
@@ -34,6 +34,7 @@ export class ListPageMosnter {
     this.dataService.getDataMonster(this.currentPage).subscribe(
       {
         next: (data: InfoMonster[]) => {
+          console.log(data)
           this.monsterList.set(data);
           this.loaded = true;
         },
@@ -45,10 +46,12 @@ export class ListPageMosnter {
   }
 
   pageChanged(event: number) {
-    if (event !== this.currentPage && event > 0) {
+    console.log(event)
+    console.log(this.currentPage)
+      console.log(this.currentPage)
       this.currentPage = event;
       this.loadMonster();
-    }
+
   }
 }
 

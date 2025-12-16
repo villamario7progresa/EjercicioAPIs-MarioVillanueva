@@ -3,7 +3,7 @@ import {ListPage} from './components/pokemon/list-page/list-page';
 import {DetailPage} from './components/pokemon/detail-page/detail-page';
 import {Home} from './components/home/home';
 import {DetailPageMosnter} from './components/monster/detail-page-mosnter/detail-page-mosnter';
-import {ListPageMosnter} from './components/monster/list-page-mosnter/list-page-mosnter';
+import {ListPageMonster} from './components/monster/list-page-monster/list-page-monster';
 
 export const routes: Routes = [
   {
@@ -25,7 +25,7 @@ export const routes: Routes = [
   },
   {
     path: 'monster/list',
-    component: ListPageMosnter
+    component: ListPageMonster
   },
   {
     path: 'monster/detail/:id',
