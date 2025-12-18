@@ -1,0 +1,46 @@
+@if (valorant) {
+    <div class="row align-items-center">
+      <div class="col-md-5 mb-4 mb-md-0 text-center">
+        <img [src]="valorant.fullPortrait" [alt]="valorant.displayName" class="img-fluid drop-shadow">
+      </div>
+
+      <div class="col-md-7">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <h1 class="display-4 fw-bold text-danger">{{valorant.displayName}}</h1>
+          <img [src]="valorant.role.displayIcon" style="width: 40px;" [title]="valorant.role.displayName">
+        </div>
+
+        <p class="lead italic text-secondary border-start border-danger ps-3">
+          "{{valorant.description}}"
+        </p>
+
+        <div class="mt-4">
+          <h5><strong>Rol:</strong> <span class="text-info">{{valorant.role.displayName}}</span></h5>
+          <h5><strong>Desarrollador:</strong> {{valorant.developerName}}</h5>
+        </div>
+
+        <div class="my-5">
+          <h3 class="text-danger mb-4"><strong>Habilidades</strong></h3>
+          <div class="row g-3">
+            @for (ability of valorant.abilities; track ability.slot){
+              @if (ability.displayIcon) {
+                <div class="col-6 col-md-3 text-center">
+                  <div class="p-2 border border-secondary rounded bg-black bg-opacity-25 h-100">
+                    <img [src]="ability.displayIcon" class="mb-2" style="width: 45px;">
+                    <h6 class="small fw-bold text-uppercase">{{ability.displayName}}</h6>
+                  </div>
+                </div>
+              }
+            }
+          </div>
+        </div>
+
+      </div>
+    </div>
+} @else {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+}

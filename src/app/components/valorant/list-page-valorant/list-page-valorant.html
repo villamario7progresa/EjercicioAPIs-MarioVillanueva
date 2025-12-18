@@ -1,0 +1,21 @@
+@if (loaded) {
+  <div class="row my-5">
+    @for (valorant of ValorantList; track valorant.uuid) {
+      <div class="col-md-3 my-2">
+        <div class="imagen rounded-circle d-flex align-items-center justify-content-center" [style.background]="'linear-gradient(135deg, #' + valorant.backgroundGradientColors[0] + ', #' + valorant.backgroundGradientColors[1] + ')'">
+          <div [routerLink]="'/valorant/detail/'+valorant.uuid">
+            <div>
+              <img class="rounded-circle" [src]="valorant.displayIcon" [alt]="valorant.displayName">
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+}

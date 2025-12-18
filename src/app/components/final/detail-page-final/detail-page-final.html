@@ -1,0 +1,46 @@
+@if (final) {
+  <div class="container py-5">
+    <div class="row align-items-center">
+
+      <div class="col-md-5 text-center">
+        <img [src]="final.img_url" [alt]="final.name" class="img-fluid drop-shadow">
+      </div>
+
+      <div class="col-md-7 px-md-5">
+        <h1 class="display-3 fw-bold text-uppercase mb-1" style="color: purple;">{{final.name}}</h1>
+        <h5 class="text-secondary mb-4">// {{final.origin}}</h5>
+
+        <div class="row mb-4">
+          <div class="col-6">
+            <p class="mb-1 text-muted">Alias</p>
+            <p class="fw-bold">{{final.alias}}</p>
+          </div>
+          <div class="col-6">
+            <p class="mb-1 text-muted">Cabello</p>
+            <p class="fw-bold">{{final.hair}}</p>
+          </div>
+        </div>
+
+        <hr class="border-secondary opacity-25">
+
+        <div class="my-5">
+          <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 2px;">Habilidades Únicas</h4>
+          <div class="d-flex flex-wrap gap-3">
+            @for (ability of final.abilities; track $index) {
+              <div class="ability-tag">
+                {{ ability }}
+              </div>
+            } @empty {
+              <p class="text-muted italic">No se registran habilidades especiales.</p>
+            }
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="d-flex justify-content-center my-5 py-5">
+    <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;"></div>
+  </div>
+}

@@ -1,0 +1,31 @@
+.drop-shadow {
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+  max-height: 550px;
+  transition: transform 0.4s ease;
+}
+
+.drop-shadow:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+
+.ability-tag {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 50px;
+  color: #0dcaf0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.ability-tag:hover {
+  background: rgba(13, 202, 240, 0.2);
+  border-color: #0dcaf0;
+  box-shadow: 0 0 15px rgba(13, 202, 240, 0.3);
+  transform: scale(1.05);
+}
