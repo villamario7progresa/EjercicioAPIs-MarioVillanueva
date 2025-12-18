@@ -3,7 +3,7 @@ import {DataService} from '../../../services/data-service';
 import {InfoPKM} from '../../../common/interfaces';
 
 @Component({
-  selector: 'app-detail-page',
+  selector: 'app-detail-page-pokemon',
   imports: [],
   templateUrl: './detail-page.html',
   styleUrl: './detail-page.css',

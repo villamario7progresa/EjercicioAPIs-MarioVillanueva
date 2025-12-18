@@ -5,7 +5,7 @@ import {NgbPagination} from '@ng-bootstrap/ng-bootstrap';
 import {RouterLink} from '@angular/router';
 
 @Component({
-  selector: 'app-list-page',
+  selector: 'app-list-page-pokemon',
   imports: [
     NgbPagination,
     RouterLink

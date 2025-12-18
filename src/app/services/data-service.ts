@@ -1,7 +1,15 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ApiMonsterResponse, ApiPokemonResponse, InfoMonster, InfoPKM} from '../common/interfaces';
+import {
+  ApiFinalResponse,
+  ApiMonsterResponse,
+  ApiPokemonResponse,
+  ApiValorantResponse, InfoFinal,
+  InfoMonster,
+  InfoPKM,
+  InfoValorant
+} from '../common/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +51,35 @@ export class DataService {
     return this.httpClient.get<InfoMonster>(
       this.urlBaseMonster + id
     );
+  }
+
+  private readonly urlBaseValorant='https://valorant-api.com/v1/agents/';
+
+  getDataValorant() : Observable<ApiValorantResponse>{
+    return this.httpClient.get<ApiValorantResponse>(
+      this.urlBaseValorant
+    )
+  }
+
+  getOneVAlorant(id:string): Observable<InfoValorant>{
+    return  this.httpClient.get<InfoValorant>(
+      this.urlBaseValorant+id
+    )
+  }
+
+
+  private readonly urlBaseFinal='https://finalspaceapi.com/api/v0/character/';
+
+  getDataFinal() : Observable<ApiFinalResponse>{
+    return this.httpClient.get<ApiFinalResponse>(
+      this.urlBaseFinal
+    )
+  }
+
+  getOneFinal(id:string): Observable<InfoFinal>{
+    return  this.httpClient.get<InfoFinal>(
+      this.urlBaseFinal+id
+    )
   }
 }
 

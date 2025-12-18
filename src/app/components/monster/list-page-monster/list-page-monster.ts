@@ -6,7 +6,7 @@ import {RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 
 @Component({
-  selector: 'app-list-page-monster',
+  selector: 'app-list-page-pokemon-monster',
   standalone: true,
   imports: [
     NgbPagination,
